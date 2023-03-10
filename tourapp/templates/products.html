@@ -1,0 +1,101 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Danh sach san pham{% endblock %}
+
+{% block content %}
+<div id="demo" class="carousel slide" data-ride="carousel">
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='images/chua-huong-ha-tay-hanoi1.jfif') }}" width="100%"
+                 height="480px"
+                 alt="img Chua Huong"/>
+        </div>
+    </div>
+</div>
+<div class="container" style="position: relative">
+    <section>
+        <div class="background-description">
+            <h1 class="tour-banner-title">Tour du lịch</h1>
+        </div>
+    </section>
+</div>
+<section class="search-tour-section search-browser-web">
+    <div class="container">
+        <hr>
+            <form>
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="searchFilterQuery search-box-web-tour">
+                                <input type="Text" name="Keyword" placeholder="Nhap tu khoa muon tim..."/>
+                                <div class="input-group-addon">
+                                    <span class="fa fa-search"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-12">
+                                    <div class="input-group date ed-datepicker filterDate" id="fromDateSearchBoxWebTour">
+                                        <input type="number" class="form-control" name="from_price" placeholder="Nhap gia bat dau..."/>
+                                        <div class="form-control">
+                                            <span class="fa fa-calendar"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <div class="input-group date ed-datepicker filterDate" id="toDateSearchBoxWebTour">
+                                        <input type="number" name="to_price" placeholder="Nhap gia ket thuc..."/>
+                                        <div class="form-control">
+                                            <span class="fa fa-calendar"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <div class="input-group date ed-datepicker filterDate" id="toDateSearchBoxWebTour">
+                                        <input type="number" name="to_price" placeholder="Nhap gia ket thuc..."/>
+                                        <div class="form-control">
+                                            <span class="fa fa-calendar"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                         <input type="submit" value="Tìm Kiếm"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 col-xs-12">
+                            <button type="submit" class="btn btn-block buttonCustomPrimary">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </hr>
+    </div>
+</section>
+<table border="1" class="product">
+    <tr>
+        <th></th>
+        <th>Mã sản phẩm</th>
+        <th>Tên sản phẩm</th>
+        <th>Mô tả</th>
+        <th>Gía bán</th>
+    </tr>
+    {% for p in products %}
+    <tr>
+        <td>
+            <a href="{{ url_for('product_detail', product_id=p.id) }}">
+                <img src="{{ url_for('static', filename = p.image) }}" width="120px" alt="{{ p.name }}"/>
+            </a>
+        </td>
+        <td> {{p.id}}</td>
+        <td> {{p.name}}</td>
+        <td> {{p.description}}</td>
+        <td> {{p.price}} VND</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+
+{% endblock %}
