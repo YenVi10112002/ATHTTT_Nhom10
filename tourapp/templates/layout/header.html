@@ -90,13 +90,24 @@
                     <a href="{{ url_for('product_list') }}">TOUR DU LỊCH</a>
                 </li>
 
+                {% if current_user.is_authenticated %}
                 <li class="sub">
-                    <a href="#">DỊCH VỤ</a>
+                    <a href="{{ url_for('home') }}"> {{ current_user.username }}</a>
+                </li>
+                <li class="sub">
+                    <a href="{{ url_for('user_signout') }}">Đăng xuất</a>
                 </li>
 
+                {% else %}
+
                 <li class="sub">
-                    <a href="#">LIÊN HỆ</a>
+                    <a href="{{ url_for('user_signin') }}">ĐĂNG NHẬP</a>
                 </li>
+                <li class="sub">
+                    <a href="{{ url_for('user_register') }}">ĐĂNG KÝ</a>
+                </li>
+                {% endif %}
+
 
             </ul>
         </div>

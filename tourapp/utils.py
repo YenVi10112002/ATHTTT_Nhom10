@@ -1,6 +1,10 @@
 import json, os
-from tourapp import app
-from tourapp.models import Category, Product
+
+
+from tourapp import app,db
+from tourapp.models import Category, Product,User
+import hashlib
+# băm pass word
 
 
 def read_json(path):
@@ -47,3 +51,23 @@ def get_product_by_id(product_id):
     #         return p
     # return None
 
+
+def add_user(name, username, password, **kwargs):
+    password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+    user = User(name=name.strip(),
+                username=username.strip(),
+                password=password,
+                email=kwargs.get('email'))
+    db.session.add(user)
+    db.session.commit()
+
+def check_login(username,password):
+
+    if username and password:
+        password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+
+        return User.query.filter(User.username.__eq__(username.strip()),
+                                 User.password.__eq__(password)).first()
+
+def get_user_by_id(user_id):
+    return User.query.get(user_id)
