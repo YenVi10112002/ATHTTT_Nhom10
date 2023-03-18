@@ -3,6 +3,10 @@ import paypalrestsdk as paypalrestsdk
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from urllib.parse import quote
+from flask_admin import Admin
+from flask_login import LoginManager
+
+
 
 
 app = Flask(__name__)
@@ -12,7 +16,6 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 app.config['CART_KEY'] = 'cart'
 
 db = SQLAlchemy(app=app)
-
 
 cloudinary.config(
   cloud_name="dscgr0uz7",
@@ -26,3 +29,6 @@ paypalrestsdk.configure({
   "client_id":"AaLiKSVM8MW6wvwnkQgcmHJq-PcDCrxW8F9Ce9TXPI3ylX0INo0FoMGBJmegeFCOJUlsQLws8PCPPIzo",
   "client_secret": "EOim3geG1r7r0IEdRLwSEt_3nfjILskcpRVoAwoWX_QzeyHxZ1MSFpPGGWCYOwTZD7oa2DEojMeHR8jh"
 })
+
+login = LoginManager(app=app)
+
