@@ -51,14 +51,16 @@ def get_product_by_id(product_id):
     # return None
 
 
-def add_bill(name, email, amount, phone, address, cccd, product_id):
+def add_bill(name, email, amount, phone, address, cccd, total, pay_date, product_id):
     user = Bill(name=name.strip(),
                 email=email.strip(),
                 amount=amount.strip(),
                 phone=phone.strip(),
                 address=address.strip(),
                 cccd=cccd.strip(),
-                product_id=product_id.strip())
+                product_id=product_id.strip(),
+                total=total,
+                pay_date=pay_date)
 
     db.session.add(user)
     db.session.commit()

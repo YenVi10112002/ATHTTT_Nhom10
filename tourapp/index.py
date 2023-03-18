@@ -58,6 +58,7 @@ def payment(product_id):
         address = request.form['address']
         cccd = request.form['cccd']
         product_id = product_id
+        pay_date = request.form['pay_date']
         price_big = request.form['price_big']
         session['price'] = float(price_big) * float(amount)
 
@@ -96,7 +97,9 @@ def payment(product_id):
                                        phone=phone,
                                        address=address,
                                        cccd=cccd,
-                                       product_id=product_id)
+                                       product_id=product_id,
+                                       pay_date=pay_date,
+                                       total=session['price'])
                         msg = 'Thanh cong'
                     except:
                         msg = 'Khong thanh cong'
@@ -107,18 +110,21 @@ def payment(product_id):
 
 @app.route('/success')
 def success():
+
     # Lấy Payment ID từ session
     payment_id = session.get('payment_id')
 
     # Xác nhận thanh toán với PayPal
     payment = paypalrestsdk.Payment.find(payment_id)
     if payment.execute({"payer_id": payment.payer.payer_info.payer_id}):
+
         # Thanh toán thành công, hiển thị trang hoàn tất thanh toán
+
         return redirect(url_for('home'))
     else:
         return "Lỗi trong quá trình xác nhận thanh toán"
 
-=======
+
 @app.route('/register', methods=['get', 'post'])
 def user_register():
     err_mgs = ""

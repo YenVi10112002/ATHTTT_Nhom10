@@ -328,6 +328,11 @@ ul.col-12 {
 .dt-start-info, .dt-end-info, .customer-pay-info, .sum-tour-info > p{
     text-align: end;
 }
+.dt-end-info > input {
+    border: hidden;
+    text-align: end;
+    width: 100%;
+}
 .payments{
     display:flex
 }
