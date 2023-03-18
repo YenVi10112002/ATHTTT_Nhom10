@@ -1,6 +1,6 @@
 import json, os
-from tourapp import app
-from tourapp.models import Category, Product
+from tourapp import app, db
+from tourapp.models import Category, Product, Bill
 
 
 def read_json(path):
@@ -46,4 +46,18 @@ def get_product_by_id(product_id):
     #     if p['id'] == product_id:
     #         return p
     # return None
+
+
+def add_bill(name, email, amount, phone, address, cccd, product_id):
+    user = Bill(name=name.strip(),
+                email=email.strip(),
+                amount=amount.strip(),
+                phone=phone.strip(),
+                address=address.strip(),
+                cccd=cccd.strip(),
+                product_id=product_id.strip())
+
+    db.session.add(user)
+    db.session.commit()
+
 

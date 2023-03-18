@@ -326,8 +326,7 @@ ul.col-12 {
     margin-bottom: 25px;
 }
 .dt-start-info, .dt-end-info, .customer-pay-info, .sum-tour-info > p{
-    text-align: end
-
+    text-align: end;
 }
 .payments{
     display:flex
