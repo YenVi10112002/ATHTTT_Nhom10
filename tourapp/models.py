@@ -52,47 +52,29 @@ class Product(BaseModel):
     active = Column(Boolean, default=True)
     created_date = Column(DateTime, default=datetime.now())
     category_id = Column(Integer, ForeignKey(Category.id), nullable=False)
-    Bill = relationship('Bill', backref='product', lazy=False)
 
     def __str__(self):
         return self.name
 
-
-class Bill(BaseModel):
-    _tablename_ = 'bill'
-
-    name = Column(String(255))
-    email = Column(String(255))
-    amount_big = Column(Integer)
-    amount_young = Column(Integer)
-    phone = Column(Integer)
-    address = Column(String(255))
-    cccd = Column(Integer)
-    pay_date = Column(Date)
-    product_id = Column(Integer, ForeignKey(Product.id), nullable=False)
-    total = Column(Integer)
-
-    def __str__(self):
-        return self.name
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-        c1 = Category(name='MIỀN BẮC')
-        c2 = Category(name='MIỀN NAM')
-        c3 = Category(name='MIỀN TRUNG')
+        c1 = Category(name='TOUR DU LỊCH')
+        c2 = Category(name='DỊCH VỤ')
+        c3 = Category(name='LIÊN HỆ')
 
         db.session.add_all([c1,c2,c3])
 
 
         p1 = Product(name="DU LỊCH ĐẢO PHÚ QUỐC", time="4 ngày 3 đêm", price_big=7770, price_small=3889,
                      datetime_start="2023-03-09", datetime_end="2023-03-13", go_start="TP. Hồ Chí Minh",
-                     go_end="Đà lạt", vehicle="Đi về bằng xe", image="images/anh1.jpg", category_id=3)
+                     go_end="Đà lạt", vehicle="Đi về bằng xe", image="images/anh1.jpg", category_id=1)
 
         p2 = Product(name="DU LỊCH ĐÀ NẴNG", time="2 ngày 2 đêm", price_big=4079, price_small=2040,
                      datetime_start="2023-03-09", datetime_end="2023-03-13", go_start="TP. Hồ Chí Minh",
                      go_end="Nha Trang", vehicle="Đi về bằng xe", image="images/anh2.jpg",
-                     category_id=3)
+                     category_id=2)
 
         p3 = Product(name="DU LỊCH ĐÀ LẠT", time="3 ngày 3 đêm", price_big=4779, price_small=2390,
                      datetime_start="2023-03-09", datetime_end="2023-03-13", go_start="TP. Hồ Chí Minh",
