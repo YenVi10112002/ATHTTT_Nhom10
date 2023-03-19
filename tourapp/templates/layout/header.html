@@ -88,9 +88,12 @@
 
                 <li class="sub">
                     <a href="{{ url_for('product_list') }}">TOUR DU LỊCH</a>
-                    {% for c in categories %}
-                    <a href="{{ url_for('product_list', category_id=c.id) }}">{{ c.name }}</a>
-                    {% endfor %}
+                    <ul class="menu1 sub1">
+                        <li>{% for c in categories %}
+                            <a href="{{ url_for('product_list', category_id=c.id) }}">{{ c.name }}</a>
+                            {% endfor %}
+                        </li>
+                    </ul>
                 </li>
 
                 {% if current_user.is_authenticated %}

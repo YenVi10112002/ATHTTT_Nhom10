@@ -520,6 +520,40 @@ ul.menucha > li > a{
 ul.menucha > li > a:hover{
     color: #FA9600;
 }
+/*css hover menu*/
+ul.menu1{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #014C8E;
+    z-index: 999 ;
+}
+ul.menu1 > li > a{
+    text-decoration: none;
+    color:white;
+    font-size: 20px;
+    transition: 0.3s;
+}
+ul.menu1 > li{
+    font-weight:bold;
+    padding: 40px 10px 40px 10px;
+    max-width: 300px;
+    width: 150px;
+}
+ul.menu1 > li > a:hover{
+    color: #FA9600;
+}
+
+.sub1{
+    display: none;
+}
+.sub:hover .sub1{
+    display: block;
+    position: absolute;
+    border-radius:10px;
+}
+
+
 .iconmenu {
     display: flex;
     list-style-type: none;
@@ -718,7 +752,16 @@ ul.hotro1 >li{
     padding-top:20px;
     padding-bottom:50px;
 }
-
+.thongbaoerr{
+    padding-top:20px
+}
+.thongbaoerr h3{
+    color:white;
+    font-size:25px;
+    background-color: #B22222;
+    width:600px;
+    margin: 0 auto;
+}
 
 
 

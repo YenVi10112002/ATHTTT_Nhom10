@@ -22,6 +22,7 @@ class ProductView(AuthenticatedModelView):
     column_filters = ['name', 'price_big', 'price_small']
 
 
+
 class LogoutView(BaseView):
     @expose('/')
     def index(self):
