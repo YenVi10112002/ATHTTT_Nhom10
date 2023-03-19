@@ -326,8 +326,12 @@ ul.col-12 {
     margin-bottom: 25px;
 }
 .dt-start-info, .dt-end-info, .customer-pay-info, .sum-tour-info > p{
-    text-align: end
-
+    text-align: end;
+}
+.dt-end-info > input {
+    border: hidden;
+    text-align: end;
+    width: 100%;
 }
 .payments{
     display:flex
@@ -488,7 +492,7 @@ div.sp1 >div{
     padding: 3px;
 }
 nav.menuchinh{
-    background-color: rgb(0,60,113);
+    background-color: #014C8E;
     display:flex;
     justify-content:space-evenly;
 }
@@ -578,7 +582,7 @@ ul.menucha > li > a:hover{
 
 /*css footer*/
 .gioithieu{
-    background-color: rgb(12, 18, 28);
+    background-color: #0D293A;
     margin: 0px;
     padding: 0px;
     padding-bottom: 10px;
@@ -655,18 +659,135 @@ ul.hotro1 >li{
     transition: 0.3s;
 }
 
-/*css banner footer
+/*css anh gioi thieu index*/
+/*text inde*/
+.textgt{
+    text-align:center;
+    padding:40px 115px 10px 115px;
+}
+.textgt h1{
+    color: #000080;
+    font-size:40px;
+}
+.textgt1{
+    padding:0px 150px 50px 150px;
+}
+
+.textgt1 div h4{
+    color:#0066d9;
+    font-weight:bold;
+    font-size:27px;
+    padding-top:20px;
+    padding-bottom:5px;
+}
+.mota1{
+    color:#696969;
+    font-size:15px;
+    padding-bottom:20px;
+}
+
+.list{
+    display: list-item;
+
+}
+.textgt11 {
+      padding-left:50px;
+}
+.list{
+      font-weight:bold;
+}
+
+
+
+/*css lognin logout*/
+.form-group{
+    margin: 0 auto;
+    width:500px;
+    padding-top:10px;
+}
+.tieudelog{
+    color:#DC143C;
+    padding-top:50px;
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+}
+.form-group1{
+    margin: 0 auto;
+    width:500px;
+    padding-top:20px;
+    padding-bottom:50px;
+}
+
+
+
+
+
+
+
+
+
+/*anh index*/
+.imac_sp{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    padding-top:40px;
+}
+.img_imac > img{
+    width: 910px;
+    height: 630px;
+    transition: 0.5s;
+}
+
+.img_imac > img:hover{
+    opacity: 0.7;
+}
+
+.text_imac{
+    width: 460px;
+}
+.text_imac > p{
+    font-size: 18px;
+    color: #696969;
+}
+.text_imac > h3{
+    font-size: 70px;
+    color: #0066d9;
+    margin: 10px 0px;
+    font-weight:bold;
+}
+
+
 .text-center {
     display: flex;
-    padding-top:10px;
-    padding-bottom: 100px;
+    padding-top:20px;
+    padding-bottom: 20px;
     justify-content:space-evenly;
 }
 .text-center img{
-    width: 450px;
-    height: 580px;
-    transition: 0.3s;
+    width:470px;
+    height: 620px;
+    transition: 0.5s;
 }
 .text-center img:hover{
     opacity: 0.7;
-}*/
+}
+
+.image1 {
+    display: flex;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    justify-content:space-evenly;
+}
+.image1 img{
+    width: 350px;
+    height: 350px;
+    transition: 0.5s;
+}
+.image1 img:hover{
+    opacity: 0.7;
+
+}
+
+

@@ -27,7 +27,9 @@
             </div>
         </div>
     </section>
+
     <section class="checkout-head-mobile">
+        <form method="post" action="{{ url_for('payment', product_id=products.id) }}">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-12 left">
@@ -35,75 +37,85 @@
                         Tổng quan về chuyến đi
                     </h2>
                     <div class="description hardCode">
-
                         <h3> Thông tin Khách hàng</h3>
                         <div class="customer-contact mb-3">
-                            <form class="customer-contact-inner" action="#">
+                            <div class="customer-contact-inner" action="#">
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="name">Họ Tên</label>
-                                        <input type="text" class="form-control" placeholder="Nhập họ tên..." id="name">
+                                        <input type="text" class="form-control" placeholder="Nhập họ tên..." id="name"
+                                               name="name">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" class="form-control" placeholder="Nhập email..." id="email">
+                                        <input type="email" class="form-control" placeholder="Nhập email..." id="email"
+                                               name="email">
                                     </div>
                                     <div class="form-group">
-                                        <label for="change">Số lượng người đi</label>
+                                        <label for="amount_big">Số lượng người lớn</label>
                                         <input type="number" class="form-control"
-                                               placeholder="Nhập số lượng người đi...." id="change">
+                                               placeholder="Nhập số lượng người đi...." id="amount_big" name="amount_big">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="amount_young">Số lượng trẻ em</label>
+                                        <input type="number" class="form-control"
+                                               placeholder="Nhập số lượng người đi...." id="amount_young" name="amount_young">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="phone">Số điện thoại</label>
                                         <input type="number" class="form-control" placeholder="Nhập số điện thoại..."
-                                               id="phone">
+                                               id="phone" name="phone">
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Địa chỉ</label>
                                         <input type="text" class="form-control" placeholder="Nhập địa chỉ..."
-                                               id="address">
+                                               id="address" name="address">
                                     </div>
                                     <div class="form-group">
                                         <label for="cccd">CCCD</label>
-                                        <input type="number" class="form-control" placeholder="Nhập địa chỉ..."
-                                               id="cccd">
+                                        <input type="number" class="form-control" placeholder="Nhập căn cước công dân..."
+                                               id="cccd" name="cccd">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pay_date">Ngày thanh toán</label>
+                                        <input type="date" class="form-control" placeholder="Nhập ngày thanh toán..."
+                                               id="pay_date" name="pay_date">
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="payment-warp">
-                        <h3 >Các hình thức thanh toán</h3>
-                        <form class="payments">
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="customMoney" name="example1"
-                                           value="customEx">
-                                    <label class="custom-control-label" for="customMoney">Tiền mặt</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="customCK" name="example1"
-                                           value="customEx">
-                                    <label class="custom-control-label" for="customCK">Chuyển khoản</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="customVNPAY" name="example1"
-                                           value="customEx">
-                                    <label class="custom-control-label" for="customVNPAY">Thanh toán VNPAY</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="customRadio" name="example1"
-                                           value="customEx">
-                                    <label class="custom-control-label" for="customRadio">Thanh toán momo</label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
+<!--                    <div class="payment-warp">-->
+<!--&lt;!&ndash;                        <h3 >Các hình thức thanh toán</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <form class="payments">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="col-sm-6 col-xs-12">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="custom-control custom-radio">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <input type="radio" class="custom-control-input" id="customMoney" name="example1"&ndash;&gt;-->
+<!--&lt;!&ndash;                                           value="customEx">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <label class="custom-control-label" for="customMoney">Tiền mặt</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="custom-control custom-radio">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <input type="radio" class="custom-control-input" id="customCK" name="example1"&ndash;&gt;-->
+<!--&lt;!&ndash;                                           value="customEx">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <label class="custom-control-label" for="customCK">Chuyển khoản</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="col-sm-6 col-xs-12">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="custom-control custom-radio">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <input type="radio" class="custom-control-input" id="customVNPAY" name="example1"&ndash;&gt;-->
+<!--&lt;!&ndash;                                           value="customEx">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <label class="custom-control-label" for="customVNPAY">Thanh toán VNPAY</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="custom-control custom-radio">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <input type="radio" class="custom-control-input" id="customRadio" name="example1"&ndash;&gt;-->
+<!--&lt;!&ndash;                                           value="customEx">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <label class="custom-control-label" for="customRadio">Thanh toán momo</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </form>&ndash;&gt;-->
+<!--                    </div>-->
                 </div>
                 <div class="col-md-4 col-12 right">
                     <div class="card">
@@ -116,16 +128,16 @@
                             <div class="row">
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="dt-start">
-                                        <span>Bắt đầu chuyến đi</span>
+                                        <span>Ngày bắt đầu </span>
                                     </div>
                                     <div class="dt-end">
-                                        <span>Kết thúc chuyến đi</span>
+                                        <span>Ngày kết thúc</span>
                                     </div>
                                     <div class="customer-pay">
-                                        <span>Hành khách</span>
+                                        <span>Giá người lớn </span>
                                     </div>
-                                    <div class="sum-tour">
-                                        <span>Tổng cộng</span>
+                                    <div class="customer-pay">
+                                        <span>Giá trẻ em </span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-xs-12">
@@ -133,23 +145,26 @@
                                         <p class="card-text">{{ products.datetime_start }}</p>
                                     </div>
                                     <div class="dt-end-info">
-                                        <p class="card-text">{{ products.datetime_end }}</p>
+                                        <p  class="card-text">{{ products.datetime_end }}</p>
                                     </div>
-                                    <div class="customer-pay-info">
-                                        <p class="card-text">2</p>
+                                    <div class="dt-end-info">
+                                        <input type="number" id="price_big" name="price_big" class="card-text" value="{{ products.price_big }}"/>
                                     </div>
-                                    <div class="sum-tour-info">
-                                        <p class="card-text">1</p>
+                                    <div class="dt-end-info">
+                                        <input type="number" id="price_young" name="price_young" class="card-text" value="{{ products.price_small }}"/>
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ url_for('pay_product', product_id=products.id) }}" class="btn btn-primary">Đặt
-                                ngay</a>
+                            <div class="index-btn-sign">
+                                <button type="submit" class="btn btn-primary">Đặt ngay</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </form>
     </section>
+
 </div>
 {% endblock %}

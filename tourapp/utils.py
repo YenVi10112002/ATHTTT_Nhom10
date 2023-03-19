@@ -2,7 +2,7 @@ import json, os
 
 
 from tourapp import app,db
-from tourapp.models import Category, Product,User
+from tourapp.models import Category, Product,User,UserRole,Bill
 import hashlib
 # băm pass word
 
@@ -52,6 +52,21 @@ def get_product_by_id(product_id):
     # return None
 
 
+def add_bill(name, email, amount_big, amount_young, phone, address, cccd, total, pay_date, product_id):
+    user = Bill(name=name.strip(),
+                email=email.strip(),
+                amount_big=amount_big.strip(),
+                amount_young=amount_young.strip(),
+                phone=phone.strip(),
+                address=address.strip(),
+                cccd=cccd.strip(),
+                product_id=product_id.strip(),
+                total=total,
+                pay_date=pay_date)
+
+    db.session.add(user)
+    db.session.commit()
+
 def add_user(name, username, password, **kwargs):
     password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
     user = User(name=name.strip(),
@@ -69,5 +84,10 @@ def check_login(username,password):
         return User.query.filter(User.username.__eq__(username.strip()),
                                  User.password.__eq__(password)).first()
 
+def check_user(username,password,role=UserRole.USER):
+    password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+    return User.query.filter(User.username.__eq__(username.strip()),
+                                 User.password.__eq__(password),
+                             User.user_role.__eq__(role)).first()
 def get_user_by_id(user_id):
     return User.query.get(user_id)
