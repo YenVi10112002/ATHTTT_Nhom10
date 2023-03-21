@@ -118,7 +118,7 @@
                     src="{{ url_for('static', filename=p.image) }}"/></a>
         </div>
 
-        <a href="chitietsp1.html"><h4 class="tensp">{{ p.name }}</h4></a>
+        <a href="{{ url_for('product_detail', product_id=p.id) }}   "><h4 class="tensp">{{ p.name }}</h4></a>
 
         <!--        <div class="new">TOUR HOT</div>-->
 
@@ -128,7 +128,7 @@
         </div>
 
         <div class="xemtchitiet">
-            <a href="{{ url_for('pay_product', product_id=p.id) }}">
+            <a href="{{ url_for('product_detail', product_id=p.id) }}">
                 <input type="submit" value="Xem chi tiết"/>
             </a>
         </div>

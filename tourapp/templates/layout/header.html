@@ -89,20 +89,25 @@
                 <li class="sub">
                     <a href="{{ url_for('product_list') }}">TOUR DU LỊCH</a>
                     <ul class="menu1 sub1">
-                        <li>{% for c in categories %}
-                            <a href="{{ url_for('product_list', category_id=c.id) }}">{{ c.name }}</a>
-                            {% endfor %}
-                        </li>
+                        {% for c in categories %}
+                        <li><a href="{{ url_for('product_list', category_id=c.id) }}">{{ c.name }}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
 
                 {% if current_user.is_authenticated %}
-                <li class="sub">
-                    <a href="{{ url_for('home') }}"> {{ current_user.username }}</a>
-                </li>
-                <li class="sub">
-                    <a href="{{ url_for('user_signout') }}">Đăng xuất</a>
-                </li>
+                <div class="userlogin">
+                    <li class="sub">
+                        <a href="{{ url_for('pay_history', user_id=current_user.id) }}">Lịch sử thanh toán</a>
+                    </li>
+                    <li class="sub">
+                        <a href="#"><i class="fas fa-solid fa-user"></i> {{ current_user.username }}</a>
+                    </li>
+
+                    <li class="sub">
+                        <a href="{{ url_for('user_signout') }}">Đăng xuất</a>
+                    </li>
+                </div>
 
                 {% else %}
 

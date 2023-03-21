@@ -3,14 +3,13 @@
 {% block title %}Trang chủ{% endblock %}
 
 {% block content %}
-{% if err_msg %}
-<div class="thongbaoerr">
-    <h3>{{ err_msg }}!</h3>
-</div>
-{% endif %}
 <h1 class="tieudelog">ĐĂNG KÝ</h1>
 
-
+{% if err_msg %}
+<div class="thongbaoerr">
+    <h3>{{ err_msg }}</h3>
+</div>
+{% endif %}
 
 <form method="post" action="{{ url_for('user_register') }}">
     <div class="form-group">

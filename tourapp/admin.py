@@ -2,8 +2,8 @@ from flask import redirect
 from flask_admin import Admin, BaseView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_login import logout_user, current_user
-
-from tourapp import app, db
+from flask import request
+from tourapp import app, db, utils
 from tourapp.models import Product, Category,UserRole
 
 admin = Admin(app=app, name="Admin hello", template_mode='bootstrap4')
@@ -22,7 +22,6 @@ class ProductView(AuthenticatedModelView):
     column_filters = ['name', 'price_big', 'price_small']
 
 
-
 class LogoutView(BaseView):
     @expose('/')
     def index(self):
@@ -32,7 +31,21 @@ class LogoutView(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated
 
+class StatsView(BaseView):
+    @expose('/')
+    def index(self):
+        stats = utils.stats_revenue(month=request.args.get('month'))
+        total = utils.total_revenue(month=request.args.get('month'))[0]
+        return self.render('admin/stats.html',stats=stats,total=total)
+
+class TourView(BaseView):
+    @expose('/')
+    def index(self):
+        stats = utils.count_tour_by_cate(month=request.args.get('month'))
+        return self.render('admin/tour.html', stats=stats)
 
 admin.add_view(AuthenticatedModelView(Category, db.session))
 admin.add_view(ProductView(Product, db.session))
 admin.add_view(LogoutView(name='Logout'))
+admin.add_view(StatsView(name='Thống kê doanh thu'))
+admin.add_view(TourView(name='Thống kê Tour'))
